@@ -4,17 +4,14 @@ using System.Text;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using BoilerPlate.Models;
+using BoilerPlate.OsobaAppService.Dto;
 
 namespace BoilerPlate.KancelariajAppService.Dto
 {
     [AutoMap(typeof(Kancelarija))]
-    public class KancelarijaGetAllDto
+    public class KancelarijaGetDto : EntityDto
     {
-        public IReadOnlyList<KancelarijaGetDto> Kancelarija { get; }
-
-        public KancelarijaGetAllDto(IReadOnlyList<KancelarijaGetDto> kancelarija)
-        {
-            Kancelarija = kancelarija;
-        }
+        public string Opis { get; set; }
+        public List<OsobaGetDto> ListaOsobe { get; set; } = new List<OsobaGetDto>();
     }
 }

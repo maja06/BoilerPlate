@@ -9,10 +9,10 @@ namespace BoilerPlate.OsobaAppService.Dto
     public interface IOsobaAppService : IApplicationService
     {
         List<OsobaGetDto> Get();
-        OsobaGetDto GetById(long id);
-        Osoba GetOsoba(long id);
+        OsobaGetDto GetById(int id);
+        Osoba GetOsoba(int id);
         void Insert(OsobaPostDto input);
-        void Update(long id, OsobaPutDto input);
-        void Delete(long id);
+        void Update(int id, OsobaPutDto input);
+        void Delete(int id);
     }
 }

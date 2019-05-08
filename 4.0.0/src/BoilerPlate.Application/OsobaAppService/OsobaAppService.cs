@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Abp.Domain.Repositories;
 using BoilerPlate.Models;
-using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
+
 
 namespace BoilerPlate.OsobaAppService.Dto
 {
@@ -29,9 +28,9 @@ namespace BoilerPlate.OsobaAppService.Dto
 
         }
 
-        public OsobaGetDto GetById(long id)
+        public OsobaGetDto GetById(int id)
         {
-            Osoba osoba;
+            Osoba osoba = new Osoba();
 
             try
             {
@@ -45,7 +44,7 @@ namespace BoilerPlate.OsobaAppService.Dto
             return ObjectMapper.Map<OsobaGetDto>(osoba);
         }
 
-        public Osoba GetOsoba(long id)
+        public Osoba GetOsoba(int id)
         {
             var osoba = _osobaRepository.FirstOrDefault(x => x.OsobaId == id);
 
@@ -64,7 +63,7 @@ namespace BoilerPlate.OsobaAppService.Dto
         }
 
 
-        public void Update(long id, OsobaPutDto input)
+        public void Update(int id, OsobaPutDto input)
         {
             _osobaRepository.Update(id, ent =>
             {
@@ -72,7 +71,7 @@ namespace BoilerPlate.OsobaAppService.Dto
             });
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             _osobaRepository.Delete(id);
         }
@@ -88,4 +87,4 @@ namespace BoilerPlate.OsobaAppService.Dto
 
 
 }
-}
+

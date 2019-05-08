@@ -12,7 +12,7 @@ namespace BoilerPlate.Models
     { 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long KancelarijaId { get; set; }
+        public int KancelarijaId { get; set; }
         public string Opis { get; set; }
 
         public IList<Osoba> ListaOsobe { get; set; }

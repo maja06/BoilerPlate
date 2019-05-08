@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Xml;
 using Abp.Domain.Repositories;
 using Abp.UI;
+using BoilerPlate.KancelariajAppService;
 using BoilerPlate.KancelariajAppService.Dto;
 using BoilerPlate.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoilerPlate.KancelariajAppService
+namespace BoilerPlate.KancelarijaAppService
 {
     public class KancelarijaAppService : BoilerPlateAppServiceBase, IKancelarijaAppService
     {
@@ -21,7 +23,12 @@ namespace BoilerPlate.KancelariajAppService
             _kancelarijaRepository = kancelarijaRepository;
         }
 
-        public KancelarijaGetDto GetKancelarija(long id)
+        KancelarijaGetDto IKancelarijaAppService.GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public KancelarijaGetDto GetKancelarija(int id)
         {
             var all = _kancelarijaRepository.GetAll().Include(p => p.ListaOsobe);
             var kancelarija = all.FirstOrDefault(x => x.Id == id);
@@ -33,13 +40,24 @@ namespace BoilerPlate.KancelariajAppService
             return ObjectMapper.Map<KancelarijaGetDto>(kancelarija);
         }
 
+        public void Insert(KancelarijaGetDto input)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<KancelarijaDto> Get()
         {
             var kancelarija = _kancelarijaRepository.GetAll();
             return new List<KancelarijaDto>(ObjectMapper.Map<List<KancelarijaDto>>(kancelarija));
         }
 
-        public KancelarijaDto GetById(long id)
+
+        List<KancelarijaGetDto> IKancelarijaAppService.Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public KancelarijaDto GetById(int id)
         {
             Kancelarija kancelarija;
             try
@@ -53,13 +71,15 @@ namespace BoilerPlate.KancelariajAppService
             return ObjectMapper.Map<KancelarijaDto>(kancelarija);
         }
 
+
         public void Insert(KancelarijaDto input)
         {
             var kancelarija = ObjectMapper.Map<Kancelarija>(input);
             _kancelarijaRepository.Insert(kancelarija);
         }
 
-        public void Update(long id, KancelarijaPutDto input)
+
+        public void Update(int id, KancelarijaPutDto input)
         {
             _kancelarijaRepository.Update(id, ent =>
             {
@@ -67,11 +87,11 @@ namespace BoilerPlate.KancelariajAppService
             });
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             _kancelarijaRepository.Delete(id);
         }
     }
 
 }
-}
+

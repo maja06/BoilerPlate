@@ -12,11 +12,11 @@ namespace BoilerPlate.UredjajAppService.Dto
     [AutoMap(typeof(Uredjaj))]
     public class UredjajGetAllDto : EntityDto
     {
-        public IReadOnlyList<UredjajGetDto> Uredjaj { get; }
+        public IReadOnlyList<UredjajGetDto> ListaUredjaja { get; }
 
-        public UredjajGetAllDto(IReadOnlyList<UredjajGetDto> uredjaj)
+        public UredjajGetAllDto(IReadOnlyList<UredjajGetDto> listaUredjaja)
         {
-            Uredjaj = uredjaj;
+            ListaUredjaja = listaUredjaja;
         }
 
       

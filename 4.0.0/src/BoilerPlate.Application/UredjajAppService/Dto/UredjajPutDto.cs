@@ -11,6 +11,6 @@ namespace BoilerPlate.UredjajAppService.Dto
     public class UredjajPutDto : EntityDto
     {
         public string Ime { get; set; }
-        public long OsobaId { get; set; }
+        public long? OsobaId { get; set; }
     }
 }

@@ -11,11 +11,11 @@ namespace BoilerPlate.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long OsobaId { get; set; }
+        public int OsobaId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
 
-        public long KancelarijaId { get; set; }
+        public int KancelarijaId { get; set; }
 
         [ForeignKey("KancelarijaId")]
         public Kancelarija Kancelarija { get; set; }

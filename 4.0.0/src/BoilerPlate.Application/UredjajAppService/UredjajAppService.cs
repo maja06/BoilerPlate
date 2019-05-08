@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using Abp.Domain.Repositories;
 using BoilerPlate.Models;
 using BoilerPlate.OsobaAppService.Dto;
@@ -25,9 +23,9 @@ namespace BoilerPlate.UredjajAppService
              return new List<UredjajGetDto>(ObjectMapper.Map<List<UredjajGetDto>>(sviUredaji));
          }
 
-         public UredjajGetDto GetById(long id)
+         public UredjajGetDto GetById(int id)
          {
-             Uredjaj uredjaj;
+             Uredjaj uredjaj = new Uredjaj();
 
              try
              {
@@ -49,12 +47,12 @@ namespace BoilerPlate.UredjajAppService
              return inserted;
          }
 
-         public void Update(long id, UredjajPutDto input)
+         public void Update(int id, UredjajPutDto input)
          {
              throw new NotImplementedException();
          }
 
-         public void Delete(long id)
+         public void Delete(int id)
          {
              throw new NotImplementedException();
          }
@@ -70,7 +68,7 @@ namespace BoilerPlate.UredjajAppService
         
          }
 
-         public Uredjaj GetUredjaj(long id)
+         public Uredjaj GetUredjaj(int id)
          {
              var svi = _uredjajRepository.GetAll();
              var uredjaj = svi.FirstOrDefault(x => x.UredjajId == id);
@@ -84,7 +82,7 @@ namespace BoilerPlate.UredjajAppService
              return uredjaj;
          }
 
-         public void IzmijeniKorisnika(long oId, long uId)
+         public void IzmijeniKorisnika(int oId, int uId)
          {
              throw new NotImplementedException();
          }

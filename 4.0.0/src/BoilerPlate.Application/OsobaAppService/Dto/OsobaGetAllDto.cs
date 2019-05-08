@@ -10,11 +10,11 @@ namespace BoilerPlate.OsobaAppService.Dto
     [AutoMap(typeof(Osoba))]
     public class OsobaGetAllDto 
     {
-        public IReadOnlyList<OsobaGetDto> Osoba { get; }
+        public IReadOnlyList<OsobaGetDto> ListaOsoba { get; }
 
-        public OsobaGetAllDto(IReadOnlyList<OsobaGetDto> osoba)
+        public OsobaGetAllDto(IReadOnlyList<OsobaGetDto> listaOsoba)
         {
-            Osoba = osoba;
+            ListaOsoba = listaOsoba;
         }
 
     }
