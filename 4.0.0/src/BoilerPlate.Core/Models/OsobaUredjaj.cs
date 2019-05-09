@@ -24,5 +24,7 @@ namespace BoilerPlate.Models
         public int OsobaId { get; set; }
         [ForeignKey("OsobaId")]
         public Osoba Osoba { get; set; }
+
+        
     }
 }

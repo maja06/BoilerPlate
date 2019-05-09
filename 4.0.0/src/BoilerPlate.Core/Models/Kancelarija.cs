@@ -17,5 +17,7 @@ namespace BoilerPlate.Models
 
         public IList<Osoba> ListaOsobe { get; set; }
 
+        
+
     }
 }

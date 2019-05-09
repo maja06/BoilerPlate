@@ -24,6 +24,8 @@ namespace BoilerPlate.Models
 
         public IList<Uredjaj> ListaUredjaji { get; set; }
 
+        
+
 
 
     }

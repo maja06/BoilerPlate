@@ -89,7 +89,12 @@ namespace BoilerPlate.KancelarijaAppService
 
         public void Delete(int id)
         {
-            _kancelarijaRepository.Delete(id);
+            var kancelarija = ObjectMapper.Map<KancelarijaGetDto>(id);
+            _kancelarijaRepository.Delete(kancelarija);
+
+
+
+
         }
     }
 
