@@ -7,11 +7,8 @@ using Abp.Domain.Entities;
 
 namespace BoilerPlate.Models
 {
-   public class Osoba : Entity
+    public class Osoba : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OsobaId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
 

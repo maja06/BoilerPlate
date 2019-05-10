@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoilerPlate.Migrations
 {
     [DbContext(typeof(BoilerPlateDbContext))]
-    [Migration("20190425105738_prva")]
-    partial class prva
+    [Migration("20190510075614_Prva")]
+    partial class Prva
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,30 +23,30 @@ namespace BoilerPlate.Migrations
 
             modelBuilder.Entity("BoilerPlate.Models.Kancelarija", b =>
                 {
-                    b.Property<long>("KancelarijaId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Opis");
 
-                    b.HasKey("KancelarijaId");
+                    b.HasKey("Id");
 
                     b.ToTable("Kancelarije");
                 });
 
             modelBuilder.Entity("BoilerPlate.Models.Osoba", b =>
                 {
-                    b.Property<long>("OsobaId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Ime");
 
-                    b.Property<long>("KancelarijaId");
+                    b.Property<int>("KancelarijaId");
 
                     b.Property<string>("Prezime");
 
-                    b.HasKey("OsobaId");
+                    b.HasKey("Id");
 
                     b.HasIndex("KancelarijaId");
 
@@ -55,19 +55,19 @@ namespace BoilerPlate.Migrations
 
             modelBuilder.Entity("BoilerPlate.Models.OsobaUredjaj", b =>
                 {
-                    b.Property<long>("OsobaUredjajId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("OsobaId");
+                    b.Property<int>("OsobaId");
 
-                    b.Property<long>("UredjajId");
+                    b.Property<int>("UredjajId");
 
                     b.Property<DateTime?>("VrijemeDo");
 
                     b.Property<DateTime>("VrijemeOd");
 
-                    b.HasKey("OsobaUredjajId");
+                    b.HasKey("Id");
 
                     b.HasIndex("OsobaId");
 
@@ -78,15 +78,15 @@ namespace BoilerPlate.Migrations
 
             modelBuilder.Entity("BoilerPlate.Models.Uredjaj", b =>
                 {
-                    b.Property<long>("UredjajId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("OsobaId");
+                    b.Property<int?>("OsobaId");
 
                     b.Property<string>("UredjajIme");
 
-                    b.HasKey("UredjajId");
+                    b.HasKey("Id");
 
                     b.HasIndex("OsobaId");
 

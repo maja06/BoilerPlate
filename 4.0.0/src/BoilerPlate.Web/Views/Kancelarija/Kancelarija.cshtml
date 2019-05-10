@@ -1,0 +1,21 @@
+﻿@model BoilerPlate.KancelariajAppService.Dto.KancelarijaGetDto
+@{
+    ViewData["Title"] = "Kancelarija";
+}
+
+<h2>Kancelarija m</h2>
+<h2 />
+
+<h2>Ime: @Model.Opis </h2>
+<br />
+
+@if (Model.ListaOsobe.Any())
+{
+    <h2>ListaOsobe: </h2>
+    foreach (var osoba in @Model.ListaOsobe)
+    {
+        <h4>@osoba.Ime @osoba.Prezime</h4>
+    }
+
+}
+

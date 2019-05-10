@@ -23,10 +23,7 @@ namespace BoilerPlate.KancelarijaAppService
             _kancelarijaRepository = kancelarijaRepository;
         }
 
-        KancelarijaGetDto IKancelarijaAppService.GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public KancelarijaGetDto GetKancelarija(int id)
         {
@@ -40,22 +37,13 @@ namespace BoilerPlate.KancelarijaAppService
             return ObjectMapper.Map<KancelarijaGetDto>(kancelarija);
         }
 
-        public void Insert(KancelarijaGetDto input)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<KancelarijaDto> Get()
+        public List<KancelarijaGetDto> Get()
         {
             var kancelarija = _kancelarijaRepository.GetAll();
-            return new List<KancelarijaDto>(ObjectMapper.Map<List<KancelarijaDto>>(kancelarija));
+            return new List<KancelarijaGetDto>(ObjectMapper.Map<List<KancelarijaGetDto>>(kancelarija));
         }
 
-
-        List<KancelarijaGetDto> IKancelarijaAppService.Get()
-        {
-            throw new NotImplementedException();
-        }
 
         public KancelarijaDto GetById(int id)
         {
@@ -68,6 +56,7 @@ namespace BoilerPlate.KancelarijaAppService
             {
                 throw new UserFriendlyException("ID Not Found");
             }
+
             return ObjectMapper.Map<KancelarijaDto>(kancelarija);
         }
 
@@ -79,21 +68,22 @@ namespace BoilerPlate.KancelarijaAppService
         }
 
 
+       
         public void Update(int id, KancelarijaPutDto input)
         {
+            var kancelarija = ObjectMapper.Map<Kancelarija>(input);
             _kancelarijaRepository.Update(id, ent =>
             {
                 ObjectMapper.Map(input, ent);
             });
+
+
         }
 
-        public void Delete(int id)
+    public void Delete(int id)
         {
-            var kancelarija = ObjectMapper.Map<KancelarijaGetDto>(id);
-            _kancelarijaRepository.Delete(kancelarija);
-
-
-
+            _kancelarijaRepository.Delete(id);
+            
 
         }
     }

@@ -1,0 +1,17 @@
+﻿@model BoilerPlate.OsobaAppService.Dto.OsobaGetAllDto
+@{
+    ViewData["Title"] = "Osoba";
+    ViewBag.ActiveMenu = "Osoba";
+}
+
+<h2>Sve Osobe</h2>
+<hr />
+
+@foreach (var osoba in Model.ListaOsoba)
+{
+    <h4 >@osoba.Ime @osoba.Prezime</h4>
+     @Html.ActionLink("Details", "Osoba", new{id = osoba.Id})
+     @Html.ActionLink( "Update", "Update", new{id = osoba.Id})
+     @Html.ActionLink( "Delete", "Delete", new { id = osoba.Id})
+}
+

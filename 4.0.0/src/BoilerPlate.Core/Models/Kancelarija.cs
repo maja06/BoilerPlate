@@ -10,14 +10,13 @@ namespace BoilerPlate.Models
   
     public class Kancelarija : Entity
     { 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int KancelarijaId { get; set; }
+        
+        
         public string Opis { get; set; }
 
-        public IList<Osoba> ListaOsobe { get; set; }
+        public IList<Osoba> ListaOsobe { get; set; } = new List<Osoba>();
 
-        
+
 
     }
 }

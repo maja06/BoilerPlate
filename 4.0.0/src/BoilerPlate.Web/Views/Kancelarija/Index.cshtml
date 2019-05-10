@@ -1,0 +1,17 @@
+﻿@model BoilerPlate.KancelariajAppService.Dto.KancelarijaGetAllDto
+@{
+    ViewBag.Title = "Kancelarija";
+    ViewBag.ActiveMenu = "Kancelarija";
+}
+
+<h2>Sve kancelarije
+    </h2>
+<hr/>
+
+@foreach (var off in Model.ListaKancelarija)
+{
+    <h4>@off.Opis</h4>
+    @Html.ActionLink("Details", "Kancelarija", new { id = off.Id })
+    @Html.ActionLink("Update", "Update", new {id = off.Id})
+    @Html.ActionLink("Delete", "Delete", new { id = off.Id })
+}

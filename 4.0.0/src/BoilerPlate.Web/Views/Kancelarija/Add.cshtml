@@ -1,0 +1,14 @@
+﻿@model BoilerPlate.KancelariajAppService.Dto.KancelarijaGetDto
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Dodaj Novu Kancelariju</h2>
+<hr />
+
+<form method="post">
+    <div class="form-group">
+        <input type="text" name="Opis" placeholder="Ime" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">@("Add")</button>
+</form>

@@ -1,22 +1,45 @@
-﻿using BoilerPlate.KancelariajAppService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Controllers;
+using BoilerPlate.KancelariajAppService;
 using BoilerPlate.KancelariajAppService.Dto;
+using log4net.Appender;
 using Microsoft.AspNetCore.Mvc;
-using BoilerPlate.KancelarijaAppService;
 
 namespace BoilerPlate.Web.Controllers
 {
+    
     public class KancelarijaController : BoilerPlateControllerBase
     {
-
-        private readonly IKancelarijaAppService _kancelarijaAppSevice;
+        private readonly IKancelarijaAppService _kancelarijaAppService;
 
         public KancelarijaController(IKancelarijaAppService kancelarijaAppService)
         {
-            _kancelarijaAppSevice = kancelarijaAppService;
+            _kancelarijaAppService = kancelarijaAppService;
+        }
+    
+        
+        public IActionResult Index()
+        {
+            var output = _kancelarijaAppService.Get();
+            var model = new KancelarijaGetAllDto(output);
+            return View(model);
+        }
+
+        
+        public IActionResult Add()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Add(KancelarijaDto input)
+        {
+             _kancelarijaAppService.Insert(input);
+           
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -25,32 +48,18 @@ namespace BoilerPlate.Web.Controllers
             KancelarijaGetDto output = null;
             if (id.HasValue)
             {
-                output = _kancelarijaAppSevice.GetKancelarija(id.Value);
+                output = _kancelarijaAppService.GetKancelarija(id.Value);
             }
-
             return View(output);
         }
 
-        public IActionResult Index()
+        public IActionResult Delete(int? id)
         {
-            var output = _kancelarijaAppSevice.Get();
-            var model = new KancelarijaGetAllDto(output);
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-
-        public IActionResult Delete(int id)
-        {
-            KancelarijaDto output = 
+            KancelarijaDto output = null;
             if (id.HasValue)
             {
-               
+                output = _kancelarijaAppService.GetById(id.Value);
+            }
 
             return View(output);
         }
@@ -58,32 +67,37 @@ namespace BoilerPlate.Web.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult Delete(int id)
         {
-            _kancelarijaAppSevice.Delete(id);
-            return RedirectToAction();
+            _kancelarijaAppService.Delete(id);
+            return RedirectToAction("Index");
         }
-
 
         public IActionResult Update(int id)
         {
-            var kancelarija = _kancelarijaAppSevice.GetKancelarija(id);
-            KancelarijaPutDto newKancelarija = new KancelarijaPutDto()
+            var kancelarija = _kancelarijaAppService.GetKancelarija(id);
+            KancelarijaPutDto novaKancelarija = new KancelarijaPutDto
             {
                 Opis = kancelarija.Opis
             };
-            
 
-            return View(newKancelarija);
+            return View(novaKancelarija);
 
         }
 
         [HttpPost]
         public IActionResult Update(int id, KancelarijaPutDto input)
         {
-            _kancelarijaAppSevice.Update(id, input);
+            _kancelarijaAppService.Update(id, input);
             return RedirectToAction("Index");
-
-
         }
-    }
-}
+            
+        
 
+
+
+
+
+
+
+    }
+
+}

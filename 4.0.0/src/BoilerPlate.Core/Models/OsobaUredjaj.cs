@@ -7,12 +7,11 @@ using Abp.Domain.Entities;
 
 namespace BoilerPlate.Models
 {
+   
     public class OsobaUredjaj : Entity
     {
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OsobaUredjajId { get; set; }
+       
         public DateTime VrijemeOd { get; set; }
         public DateTime? VrijemeDo { get; set; }
 

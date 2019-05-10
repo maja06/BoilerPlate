@@ -1,0 +1,15 @@
+﻿@model BoilerPlate.KancelariajAppService.Dto.KancelarijaPutDto
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h2>Update Kancelariju</h2>
+<hr />
+
+<form method="post">
+    <div class="from-group">
+        Ime: <input type="text" name="Opis" class="form-control" value="@Model.Opis"/>
+    </div>
+    <button type="submit" class="btn btn-primarty">@("Update")</button>
+</form>
+

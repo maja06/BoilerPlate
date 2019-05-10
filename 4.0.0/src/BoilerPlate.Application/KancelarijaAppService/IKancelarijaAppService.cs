@@ -9,9 +9,9 @@ namespace BoilerPlate.KancelariajAppService
     public interface IKancelarijaAppService : IApplicationService
     {
         List<KancelarijaGetDto> Get();
-        KancelarijaGetDto GetById(int id);
+        KancelarijaDto GetById(int id);
         KancelarijaGetDto GetKancelarija(int id);
-        void Insert(KancelarijaGetDto input);
+        void Insert(KancelarijaDto input);
         void Update (int id, KancelarijaPutDto input);
         void Delete(int id);
     }
