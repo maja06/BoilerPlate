@@ -57,7 +57,12 @@ namespace BoilerPlate.Web.Startup
                         "Osoba",
                         L("Dodaj novu osobu"),
                         url: "Osoba/Add",
-                        icon: "fa fa-tasks"))
+                        icon: "fa fa-tasks")
+                    ).AddItem(new MenuItemDefinition(
+                        "Osoba",
+                        L("Sve Osobe"),
+                        url: "Osoba",
+                        icon: "fa fa-tasks" ))
 
 
 

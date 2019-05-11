@@ -13,7 +13,8 @@ namespace BoilerPlate.Models
         public string UredjajIme { get; set; }
 
         public int? OsobaId { get; set; }
-        [ForeignKey("OsobaId")] public Osoba Osoba { get; set; }
+        [ForeignKey("OsobaId")]
+        public Osoba Osoba { get; set; }
 
         public IList<OsobaUredjaj> ListaKoriscenje { get; set; }
 

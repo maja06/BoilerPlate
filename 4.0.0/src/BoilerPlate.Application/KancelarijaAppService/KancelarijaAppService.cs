@@ -80,7 +80,7 @@ namespace BoilerPlate.KancelarijaAppService
 
         }
 
-    public void Delete(int id)
+        public void Delete(int id)
         {
             _kancelarijaRepository.Delete(id);
             

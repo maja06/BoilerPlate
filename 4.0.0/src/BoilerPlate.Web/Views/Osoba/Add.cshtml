@@ -1,7 +1,7 @@
 ﻿@model BoilerPlate.OsobaAppService.Dto.OsobaPostDto
 @{
     ViewData["Title"] = "Add";
-    var kancelarijaList = ViewBag.KancelarijaList as SelectList;
+    var kancelarijaLista = ViewBag.Kancelarija as SelectList;
 }
 
 <h2>Dodaj novu osobu</h2>
@@ -11,7 +11,7 @@
     <div class="form-group">
         <input type="text" name="Ime" placeholder="Ime" class="form-control" />
         <input type="text" name="Prezime" placeholder="Prezime" class="form-control" />
-        @Html.DropDownListFor(x => x.KancelarijaId , kancelarijaList , "Select Kancekariju")
+        @Html.DropDownListFor(x => x.KancelarijaId , kancelarijaLista , "Select Kancekarija")
     </div>
     <button type="submit" class="btn btn-primary">@("Add")</button>
 </form>

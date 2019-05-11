@@ -34,11 +34,11 @@ namespace BoilerPlate.OsobaAppService.Dto
 
         public OsobaGetDto GetById(int id)
         {
-            Osoba osoba = new Osoba();
+            Osoba osoba;
 
             try
             {
-
+                osoba = _osobaRepository.Get(id);
             }
             catch (Exception)
             {

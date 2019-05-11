@@ -1,4 +1,4 @@
-﻿
+﻿@model BoilerPlate.KancelariajAppService.Dto.KancelarijaDto
 @{
     ViewData["Title"] = "Delete";
 }
@@ -7,7 +7,7 @@
 <hr/>
 
 <h2>Ime: @Model.Opis <br/>Id: @Model.Id</h2>
-<form method=""post>
+<form method="post">
     <buttoon type="submit" class="btn btn-danger">@("Delete")</buttoon>
 </form>
 

@@ -2,91 +2,101 @@
 using System.Collections.Generic;
 using System.Linq;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using BoilerPlate.Models;
 using BoilerPlate.OsobaAppService.Dto;
 using BoilerPlate.UredjajAppService.Dto;
 
 namespace BoilerPlate.UredjajAppService
 {
-     //public class UredjajAppService : BoilerPlateAppServiceBase, IUredjajAppService
-     //{
-     //    //private readonly IRepository<Uredjaj> _uredjajRepository;
+    public class UredjajAppService : BoilerPlateAppServiceBase, IUredjajAppService
+    {
+        private readonly IRepository<Uredjaj> _uredjajRepository;
 
-     //    //public UredjajAppService(IRepository<Uredjaj> uredjajRepository)
-     //    //{
-     //    //    _uredjajRepository = uredjajRepository;
-     //    //}
+        public UredjajAppService(IRepository<Uredjaj> uredjajRepository)
+        {
+            _uredjajRepository = uredjajRepository;
+        }
 
-     //    //public List<UredjajGetDto> Get()
-     //    //{
-     //    //    var sviUredaji = _uredjajRepository.GetAll();
-     //    //    return new List<UredjajGetDto>(ObjectMapper.Map<List<UredjajGetDto>>(sviUredaji));
-     //    //}
+        public List<UredjajGetDto> Get()
+        {
+            var sviUredaji = _uredjajRepository.GetAll();
+            return new List<UredjajGetDto>(ObjectMapper.Map<List<UredjajGetDto>>(sviUredaji));
+        }
 
-     //    //public UredjajGetDto GetById(int id)
-     //    //{
-     //    //    Uredjaj uredjaj = new Uredjaj();
+        public UredjajDto GetById(int id)
+        {
+            Uredjaj uredjaj;
 
-     //    //    try
-     //    //    {
+            try
+            {
+                uredjaj = _uredjajRepository.Get(id);
+            }
+            catch (Exception)
 
-     //    //    }
-     //    //    catch (Exception)
+            {
+                throw new Exception("Id nije nadjen");
+            }
 
-     //    //    {
-     //    //        throw new Exception("Id nije nadjen");
-     //    //    }
+            return ObjectMapper.Map<UredjajDto>(uredjaj);
+        }
 
-     //    //    return ObjectMapper.Map<UredjajGetDto>(uredjaj);
-     //    //}
-
-     //    //public int Insert(UredjajPostDto input)
-     //    //{
-     //    //    var uredjaj = ObjectMapper.Map<Uredjaj>(input);
-     //    //    var inserted = _uredjajRepository.InsertAndGetId(uredjaj);
-     //    //    return inserted;
-     //    //}
-
-     //    //public void Update(int id, UredjajPutDto input)
-     //    //{
-     //    //    throw new NotImplementedException();
-     //    //}
-
-     //    //public void Delete(int id)
-     //    //{
-     //    //    throw new NotImplementedException();
-     //    //}
-
-     //    //public void Update(int id, UredjajGetDto input)
-     //    //{
+        public int Insert(UredjajPostDto input)
+        {
+            var uredjaj = ObjectMapper.Map<Uredjaj>(input);
+            var inserted = _uredjajRepository.InsertAndGetId(uredjaj);
+            return inserted;
+        }
 
 
-     //    //_uredjajRepository.Update(id, ent =>
-     //    //{ ObjectMapper.Map(input, ent); 
-                 
-     //    //});
-        
-     //    //}
+        public Uredjaj GetUredjaj(int id)
+        {
+            var all = _uredjajRepository.GetAll();
+            var uredjaj = all.FirstOrDefault(x => x.Id == id);
 
-     //    //public Uredjaj GetUredjaj(int id)
-     //    //{
-     //    //    var svi = _uredjajRepository.GetAll();
-     //    //    var uredjaj = svi.FirstOrDefault(x => x.UredjajId == id);
+            if (uredjaj == null)
+            {
+                throw new Exception("Id Not Found");
 
-     //    //    if (uredjaj == null)
-     //    //    {
-     //    //        throw new Exception("Id Not Found");
+            }
 
-     //    //    }
+            return uredjaj;
+        }
 
-     //    //    return uredjaj;
-     //    //}
+        public void Update(int id, UredjajPutDto input)
+        {
+            _uredjajRepository.Update(id, ent =>
+            {
+                ObjectMapper.Map(input, ent);
+            });
+        }
 
-     //    //public void IzmijeniKorisnika(int oId, int uId)
-     //    //{
-     //    //    throw new NotImplementedException();
-     //    //}
+        public void Delete(int id)
+        {
+            _uredjajRepository.Delete(id);
+        }
 
-       
-     //}
+        public void IzmijeniKorisnika(int oId, int uId)
+        {
+            var foundUredjaj = _uredjajRepository.Get(uId);
+
+            if (foundUredjaj == null)
+            {
+                throw new Exception("Uredjaj ne postoji");
+            }
+
+            if (foundUredjaj.OsobaId == oId && foundUredjaj.Id == uId)
+            {
+                throw new Exception("Korisnik vec korisnik trazeni uredjaj");
+            }
+
+            foundUredjaj.OsobaId = oId;
+        }
+
+
+
+     
+
+
+    }
 }
