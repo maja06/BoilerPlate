@@ -10,7 +10,7 @@ namespace BoilerPlate.UredjajAppService.Dto
     [AutoMap(typeof(Uredjaj))]
      public class UredjajPostDto : EntityDto
     {
-        public string Ime { get; set; }
+        public string UredjajIme { get; set; }
         public int OsobaId { get; set; }
     }
 }

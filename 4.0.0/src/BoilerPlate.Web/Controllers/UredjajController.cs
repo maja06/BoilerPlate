@@ -66,33 +66,33 @@ namespace BoilerPlate.Web.Controllers
 
         }
 
-        //public IActionResult Update(int id)
-        //{
-        //    var uredjaj = _uredjajAppService.GetUredjaj(id);
-        //    UredjajPutDto newUredjaj = new UredjajPutDto
-        //    {
-        //        Ime = uredjaj.UredjajIme,
-        //        OsobaId = uredjaj.OsobaId
+        public IActionResult Update(int id)
+        {
+            var uredjaj = _uredjajAppService.GetUredjaj(id);
+            UredjajPutDto newUredjaj = new UredjajPutDto
+            {
+                Ime = uredjaj.UredjajIme,
+                OsobaId = uredjaj.OsobaId
 
 
-        //    };
+            };
 
-        //    var listaOsoba = SelectOsobu();
-        //    ViewData["SelectOsobu"] = listaOsoba;
-        //    return View(newUredjaj);
-        //}
+            var listaOsoba = SelectOsobu();
+            ViewData["SelectOsobu"] = listaOsoba;
+            return View(newUredjaj);
+        }
 
-        //[HttpPost]
-        //public IActionResult Update(int id, UredjajPutDto input)
-        //{
-        //    _uredjajAppService.IzmijeniKorisnika(input.OsobaId, id);
-        //    _osobaUredjajAppService.EndKoriscenje(id);
-        //    _osobaUredjajAppService.AddKoriscenje(id, input.OsobaId);
-        //    _uredjajAppService.Update(id, input);
-        //    return RedirectToAction("Index");
+        [HttpPost]
+        public IActionResult Update(int id, UredjajPutDto input)
+        {
+            _uredjajAppService.IzmijeniKorisnika(input.OsobaId, id);
+            _osobaUredjajAppService.EndKoriscenje(id);
+            _osobaUredjajAppService.AddKoriscenje(id, input.OsobaId);
+            _uredjajAppService.Update(id, input);
+            return RedirectToAction("Index");
 
 
-        //}
+        }
 
 
         public SelectList SelectOsobu()

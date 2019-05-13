@@ -7,7 +7,7 @@ namespace BoilerPlate.UredjajAppService.Dto
 {
     public class UredjajDto : EntityDto
     {
-        public string Ime { get; set; }
+        public string UredjajIme { get; set; }
 
     }
 }

@@ -10,6 +10,6 @@ namespace BoilerPlate.OsobaAppService.Dto
     [AutoMap(typeof(Uredjaj))]
      public class UredjajGetDto : EntityDto
     {
-        public string Ime { get; set; }
+        public string UredjajIme { get; set; }
     }
 }
