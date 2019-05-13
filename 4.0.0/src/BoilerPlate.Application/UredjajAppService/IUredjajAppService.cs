@@ -13,6 +13,7 @@ namespace BoilerPlate.UredjajAppService
     {
         List<UredjajGetDto> Get();
         UredjajDto GetById(int id);
+
         Uredjaj GetUredjaj(int id);
         int Insert(UredjajPostDto input);
         void Update(int id, UredjajPutDto input);

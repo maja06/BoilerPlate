@@ -1,6 +1,9 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using BoilerPlate.Models;
+using BoilerPlate.OsobaUredjajAppService.Dto;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BoilerPlate
 {
@@ -12,6 +15,17 @@ namespace BoilerPlate
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(BoilerPlateApplicationModule).GetAssembly());
+        }
+
+
+        public override void PreInitialize()
+        {
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
+                config.CreateMap<OsobaUredjaj, OsobaUredjajGetDto>()
+                    .ForMember(s => s.Osoba, d => d.MapFrom(x => x.Osoba.Ime + "" + x.Osoba.Prezime))
+                    .ForMember(s => s.Uredjaj, d => d.MapFrom(x => x.Uredjaj.UredjajIme));
+            });
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Dynamic.Core;
 using Abp.Domain.Repositories;
 using BoilerPlate.Models;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace BoilerPlate.OsobaAppService.Dto
@@ -24,8 +22,7 @@ namespace BoilerPlate.OsobaAppService.Dto
 
             if (osoba == null)
             {
-                throw new Exception("Kancelarija" +
-                                    " nije nadjena");
+                throw new Exception("Kancelarija nije nadjena");
             }
 
             return new List<OsobaGetDto>(ObjectMapper.Map<List<OsobaGetDto>>(osoba));

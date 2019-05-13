@@ -12,7 +12,7 @@ namespace BoilerPlate.OsobaAppService.Dto
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        public long KancelarijaId { get; set; }
+        public int KancelarijaId { get; set; }
 
     }
 }

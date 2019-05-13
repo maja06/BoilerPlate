@@ -8,7 +8,7 @@ using BoilerPlate.Models;
 namespace BoilerPlate.OsobaUredjajAppService.Dto
 {
     [AutoMap(typeof(OsobaUredjaj))]
-    public class OsobauredjajGetDto
+    public class OsobaUredjajGetDto
     {
         public string Osoba { get; set; }
         public string Uredjaj { get; set; }

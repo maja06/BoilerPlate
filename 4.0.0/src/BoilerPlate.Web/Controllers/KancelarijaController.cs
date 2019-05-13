@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp.AspNetCore.Mvc.Controllers;
-using BoilerPlate.KancelariajAppService;
+﻿using BoilerPlate.KancelariajAppService;
 using BoilerPlate.KancelariajAppService.Dto;
-using log4net.Appender;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoilerPlate.Web.Controllers

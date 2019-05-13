@@ -1,9 +1,9 @@
-﻿@using BoilerPlate.Web.Dto
+﻿
 @model BoilerPlate.OsobaAppService.Dto.OsobaPutDto
 @{
     ViewData["Title"] = "Update";
 
-    var kancelarijaLista = ViewBag.KancelarijaLista as SelectList;
+   
 }
 
 <h2>Update Osobu</h2>
@@ -13,7 +13,7 @@
     <div class="form-group">
         Ime: <input type="text" name="Ime" class="form-control" value="@Model.Ime" />
         Prezime: <input type="text" name="Prezime" class="form-control" value = "@Model.Prezime" />
-        @Html.DropDownListFor(x => x.KancelarijaId, kancelarijaLista)
+        Kancelarija<input type="text" name="KancelariajId" class="form-control" value="@Model.KancelarijaId" />
     </div>
     <button type="submit" class="btn btn-primary">@("Update")</button>
 </form>

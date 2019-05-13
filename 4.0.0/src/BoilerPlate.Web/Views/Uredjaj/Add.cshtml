@@ -1,20 +1,17 @@
-﻿@model BoilerPlate.Models.Osoba
+﻿@model BoilerPlate.UredjajAppService.Dto.UredjajPutDto
 @{
     ViewData["Title"] = "Add";
-    
+   
 }
 
-<h2>Dodaj novu osobu</h2>
+<h2>Dodaj novi uredjaj</h2>
+
 <hr />
 
 <form method="post">
     <div class="form-group">
         <input type="text" name="Ime" placeholder="Ime" class="form-control" />
-        <input type="text" name="Prezime" placeholder="Prezime" class="form-control" />
-        <input type="text" name="KancelarijaId" placeholder="Kancelarija"  />
-
-
-
+      
     </div>
     <button type="submit" class="btn btn-primary">@("Add")</button>
 </form>

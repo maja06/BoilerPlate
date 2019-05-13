@@ -88,6 +88,7 @@ namespace BoilerPlate.Web.Controllers
             var listaKancelarija = kancelaija.ListaKancelarija.ToList();
 
             SelectList selectKan = new SelectList(listaKancelarija, "id", "Opis");
+            
 
             return selectKan;
 
