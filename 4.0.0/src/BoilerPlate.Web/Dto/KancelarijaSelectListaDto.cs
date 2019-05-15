@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BoilerPlate.KancelariajAppService;
-using BoilerPlate.KancelariajAppService.Dto;
+using BoilerPlate.KancelarijaAppService;
+using BoilerPlate.KancelarijaAppService.Dto;
 
 namespace BoilerPlate.Web.Dto
 {

@@ -1,5 +1,5 @@
-﻿using BoilerPlate.KancelariajAppService;
-using BoilerPlate.KancelariajAppService.Dto;
+﻿using BoilerPlate.KancelarijaAppService;
+using BoilerPlate.KancelarijaAppService.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoilerPlate.Web.Controllers

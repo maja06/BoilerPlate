@@ -3,7 +3,6 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using BoilerPlate.Models;
 using BoilerPlate.OsobaUredjajAppService.Dto;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BoilerPlate
 {

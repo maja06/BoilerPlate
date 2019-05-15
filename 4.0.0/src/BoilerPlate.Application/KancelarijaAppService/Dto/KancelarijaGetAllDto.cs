@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Abp.Application.Services.Dto;
+﻿using System.Collections.Generic;
 using Abp.AutoMapper;
 using BoilerPlate.Models;
 
-namespace BoilerPlate.KancelariajAppService.Dto
+namespace BoilerPlate.KancelarijaAppService.Dto
 {
     [AutoMap(typeof(Kancelarija))]
     public class KancelarijaGetAllDto

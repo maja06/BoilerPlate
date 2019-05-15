@@ -1,7 +1,7 @@
 ﻿@model BoilerPlate.UredjajAppService.Dto.UredjajPutDto
 @{
     ViewData["Title"] = "Add";
-   
+    var listaOsoba = ViewBag.SelectOsoba as SelectList;
 }
 
 <h2>Dodaj novi uredjaj</h2>
@@ -10,8 +10,9 @@
 
 <form method="post">
     <div class="form-group">
-        <input type="text" name="Ime" placeholder="Ime" class="form-control" />
-      
+        <input type="text" name="UredjajIme" placeholder="UredjajIme" class="form-control" />
+        <input type="text" name="OsobaId" placeholder="OsobaId" class="form-control" />
+
     </div>
     <button type="submit" class="btn btn-primary">@("Add")</button>
 </form>

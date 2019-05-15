@@ -1,0 +1,18 @@
+﻿@model BoilerPlate.UredjajAppService.Dto.UredjajPutDto
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h2>Update Uredjaj</h2>
+
+<hr />
+
+<form method="post">
+    <div class="form-group">
+        Ime: <input type="text" name="UredjajIme" value="@Model.UredjajIme " class="form-control" />
+        OsobaId: <input type="text" name="OsobaId" value="@Model.OsobaId " class="form-control" />
+        
+
+    </div>
+    <button type="submit" class="btn btn-primary">@("Update")</button>
+</form>

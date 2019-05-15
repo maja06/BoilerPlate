@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BoilerPlate.KancelariajAppService;
+﻿using System.Linq;
 using BoilerPlate.KancelarijaAppService;
 using BoilerPlate.OsobaAppService.Dto;
 using BoilerPlate.Web.Dto;
-using log4net.Appender;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.CSharp;
 
 namespace BoilerPlate.Web.Controllers
 {
@@ -79,6 +72,18 @@ namespace BoilerPlate.Web.Controllers
             ViewData["KancelarijaLista"] = listaKancelarija;
             return View(newOsoba);
 
+        }
+
+        public IActionResult Osoba(int? id)
+        {
+            OsobaGetDto output = null;
+            if (id.HasValue)
+            {
+                output = _osobaAppService.GetById(id.Value);
+
+            }
+
+            return View(output);
         }
 
         public SelectList SelectKancelarija()

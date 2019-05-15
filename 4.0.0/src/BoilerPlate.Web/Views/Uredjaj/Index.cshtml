@@ -1,0 +1,16 @@
+﻿@model BoilerPlate.UredjajAppService.Dto.UredjajGetAllDto   
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Svi Uredjaji</h2>
+<hr />
+
+@foreach (var uredjaj in Model.ListaUredjaja)
+{
+    <h4>@uredjaj.UredjajIme </h4>
+    @Html.ActionLink("Details", "Uredjaj", new { id = uredjaj.Id })
+    @Html.ActionLink("Update", "Update", new { id = uredjaj.Id })
+    @Html.ActionLink("Delete", "Delete", new { id = uredjaj.Id })
+}
+}

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Abp.Domain.Repositories;
 using BoilerPlate.Models;
+using BoilerPlate.OsobaAppService.Dto;
 
-
-namespace BoilerPlate.OsobaAppService.Dto
+namespace BoilerPlate.OsobaAppService
 {
     public class OsobaAppService : BoilerPlateAppServiceBase, IOsobaAppService
     {
@@ -69,13 +69,12 @@ namespace BoilerPlate.OsobaAppService.Dto
 
         public void Update(int id, OsobaPutDto input)
         {
-            var osoba = ObjectMapper.Map<Kancelarija>(input);
+            ObjectMapper.Map<Kancelarija>(input);
             _osobaRepository.Update(id, ent =>
             {
                 ObjectMapper.Map(id, ent); 
 
             });
-
         }
 
 

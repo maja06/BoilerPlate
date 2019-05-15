@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BoilerPlate.OsobaAppService.Dto;
 using BoilerPlate.OsobaUredjajAppService;
+using BoilerPlate.OsobaUredjajAppService.Dto;
 using BoilerPlate.UredjajAppService;
 using BoilerPlate.UredjajAppService.Dto;
 using BoilerPlate.Web.Dto;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
 
 namespace BoilerPlate.Web.Controllers
 {
@@ -36,9 +33,10 @@ namespace BoilerPlate.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult Uredjaj(int? id)
         {
-            UredjajDto output = null;
+            UredjajGetDto output = null;
             if (id.HasValue)
             {
                 output = _uredjajAppService.GetById(id.Value);
@@ -47,7 +45,7 @@ namespace BoilerPlate.Web.Controllers
             return View(output);
         }
 
-        [Authorize]
+        
         public IActionResult Add()
         {
             var listaOsoba = SelectOsobu();
@@ -55,13 +53,14 @@ namespace BoilerPlate.Web.Controllers
             return View();
         }
 
-        [Authorize]
+       
+        [HttpPost]
         public IActionResult Add(UredjajPostDto input)
         {
             var inserted = _uredjajAppService.Insert(input);
             var uredjajId = inserted;
             var osobaId = input.OsobaId;
-            _osobaUredjajAppService.AddKoriscenje(uredjajId, osobaId);
+            if (osobaId != null) _osobaUredjajAppService.AddKoriscenje(uredjajId, (int) osobaId);
             return RedirectToAction("Index");
 
         }
@@ -71,8 +70,8 @@ namespace BoilerPlate.Web.Controllers
             var uredjaj = _uredjajAppService.GetUredjaj(id);
             UredjajPutDto newUredjaj = new UredjajPutDto
             {
-                Ime = uredjaj.UredjajIme,
-                OsobaId = uredjaj.OsobaId
+                UredjajIme = uredjaj.UredjajIme,
+                OsobaId =  uredjaj.OsobaId
 
 
             };
@@ -85,15 +84,38 @@ namespace BoilerPlate.Web.Controllers
         [HttpPost]
         public IActionResult Update(int id, UredjajPutDto input)
         {
-            _uredjajAppService.IzmijeniKorisnika(input.OsobaId, id);
-            _osobaUredjajAppService.EndKoriscenje(id);
-            _osobaUredjajAppService.AddKoriscenje(id, input.OsobaId);
+            if (input.OsobaId != null)
+            {
+                _uredjajAppService.IzmijeniKorisnika((int) input.OsobaId, id);
+                _osobaUredjajAppService.EndKoriscenje(id);
+                _osobaUredjajAppService.AddKoriscenje(id, (int) input.OsobaId);
+            }
+
             _uredjajAppService.Update(id, input);
             return RedirectToAction("Index");
 
 
+              
         }
 
+        public IActionResult Delete(int? id)
+        {
+            UredjajGetDto output = null;
+            if (id.HasValue)
+            {
+                output = _uredjajAppService.GetById(id.Value);
+            }
+
+            return View(output);
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete(int id)
+        {
+            _uredjajAppService.Delete(id);
+            return RedirectToAction("Index");
+        }
 
         public SelectList SelectOsobu()
         {
@@ -103,7 +125,7 @@ namespace BoilerPlate.Web.Controllers
 
             var selectOsobu = listaOsoba.Select(x => new
             {
-                Id = x.Id,
+                x.Id,
                 Ime = x.Ime + "" + x.Prezime
             });
 
@@ -111,6 +133,17 @@ namespace BoilerPlate.Web.Controllers
 
             return selectOsobe;
         }
+
+        public IActionResult Istorija(int id)
+        {
+            var koriscenje = _osobaUredjajAppService.SvePoUredjaju(id);
+            ViewData["ListaKoriscenje"] = koriscenje;
+            KoriscenjeUredjajajDto lista = new KoriscenjeUredjajajDto();
+            lista.Koriscenja = ObjectMapper.Map<List<OsobaUredjajGetDto>>(koriscenje);
+            return View(lista);
+        }
+
+      
 
 
 

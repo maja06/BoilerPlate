@@ -1,0 +1,14 @@
+﻿@model BoilerPlate.OsobaAppService.Dto.UredjajGetDto
+@{
+    ViewData["Title"] = "Uredjaj";
+}
+
+<h2>Uredjaj Details</h2>
+<hr />
+
+<h2>Ime: @Model.UredjajIme</h2>
+
+@Html.ActionLink("History", "Istorija", "Uredjaj", new {Model.Id })
+
+
+

@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Xml;
 using Abp.Domain.Repositories;
 using Abp.UI;
-using BoilerPlate.KancelariajAppService;
-using BoilerPlate.KancelariajAppService.Dto;
+using BoilerPlate.KancelarijaAppService.Dto;
 using BoilerPlate.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -71,13 +67,11 @@ namespace BoilerPlate.KancelarijaAppService
        
         public void Update(int id, KancelarijaPutDto input)
         {
-            var kancelarija = ObjectMapper.Map<Kancelarija>(input);
+            ObjectMapper.Map<Kancelarija>(input);
             _kancelarijaRepository.Update(id, ent =>
             {
                 ObjectMapper.Map(input, ent);
             });
-
-
         }
 
         public void Delete(int id)

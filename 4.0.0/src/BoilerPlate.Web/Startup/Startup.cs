@@ -22,6 +22,8 @@ namespace BoilerPlate.Web.Startup
                 DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
             });
 
+
+
             services.AddMvc(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
@@ -52,6 +54,7 @@ namespace BoilerPlate.Web.Startup
             }
 
             app.UseStaticFiles();
+
 
             app.UseMvc(routes =>
             {

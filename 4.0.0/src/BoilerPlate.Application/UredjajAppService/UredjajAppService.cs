@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Abp.Domain.Repositories;
-using Abp.Domain.Uow;
 using BoilerPlate.Models;
 using BoilerPlate.OsobaAppService.Dto;
 using BoilerPlate.UredjajAppService.Dto;
@@ -24,7 +23,7 @@ namespace BoilerPlate.UredjajAppService
             return new List<UredjajGetDto>(ObjectMapper.Map<List<UredjajGetDto>>(sviUredaji));
         }
 
-        public UredjajDto GetById(int id)
+        public UredjajGetDto GetById(int id)
         {
             Uredjaj uredjaj;
 
@@ -38,7 +37,7 @@ namespace BoilerPlate.UredjajAppService
                 throw new Exception("Id nije nadjen");
             }
 
-            return ObjectMapper.Map<UredjajDto>(uredjaj);
+            return ObjectMapper.Map<UredjajGetDto>(uredjaj);
         }
 
         public int Insert(UredjajPostDto input)
@@ -87,7 +86,7 @@ namespace BoilerPlate.UredjajAppService
 
             if (foundUredjaj.OsobaId == oId && foundUredjaj.Id == uId)
             {
-                throw new Exception("Korisnik vec korisnik trazeni uredjaj");
+                throw new Exception("Korisnik vec koristi trazeni uredjaj");
             }
 
             foundUredjaj.OsobaId = oId;

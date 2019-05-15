@@ -1,0 +1,16 @@
+﻿@model BoilerPlate.OsobaUredjajAppService.Dto.KoriscenjeUredjajajDto 
+@{
+    ViewData["Title"] = "Istorija";
+}
+
+<h2>Istorija</h2>
+<hr />
+    
+    @foreach (var m in Model.Koriscenja)
+    {
+        <p>Ime: @m.Osoba </p>
+        <p>Vrijeme Od: @m.VrijemeOd</p>
+        <p>Vrijeme Do: @m.VrijemeDo</p>
+    }
+<hr />
+

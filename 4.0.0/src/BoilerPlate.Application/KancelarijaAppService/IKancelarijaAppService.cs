@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Abp.Application.Services;
-using BoilerPlate.KancelariajAppService.Dto;
+using BoilerPlate.KancelarijaAppService.Dto;
 
-namespace BoilerPlate.KancelariajAppService
+namespace BoilerPlate.KancelarijaAppService
 {
     public interface IKancelarijaAppService : IApplicationService
     {

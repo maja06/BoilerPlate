@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Abp.Application.Services;
 using BoilerPlate.Models;
 using BoilerPlate.OsobaAppService.Dto;
@@ -12,8 +10,7 @@ namespace BoilerPlate.UredjajAppService
 
     {
         List<UredjajGetDto> Get();
-        UredjajDto GetById(int id);
-
+        UredjajGetDto GetById(int id);
         Uredjaj GetUredjaj(int id);
         int Insert(UredjajPostDto input);
         void Update(int id, UredjajPutDto input);

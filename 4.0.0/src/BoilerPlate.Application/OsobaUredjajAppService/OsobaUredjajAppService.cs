@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Abp.Domain.Repositories;
 using BoilerPlate.Models;
-using BoilerPlate.OsobaAppService.Dto;
 using Microsoft.EntityFrameworkCore;
 
 namespace BoilerPlate.OsobaUredjajAppService
 {
-   public class OsobaUredjajAppService : BoilerPlateAppServiceBase 
+   public class OsobaUredjajAppService : BoilerPlateAppServiceBase, IOsobaUredjajAppService 
    {
        private readonly IRepository<OsobaUredjaj> _osobaUredjajRepository;
 

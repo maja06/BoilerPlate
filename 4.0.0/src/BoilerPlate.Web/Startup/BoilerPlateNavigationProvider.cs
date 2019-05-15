@@ -1,5 +1,4 @@
-﻿using System.Security.Policy;
-using Abp.Application.Navigation;
+﻿using Abp.Application.Navigation;
 using Abp.Localization;
 
 namespace BoilerPlate.Web.Startup
@@ -60,7 +59,7 @@ namespace BoilerPlate.Web.Startup
                         url: "Osoba/Add",
                         icon: "fa fa-tasks")
 
-                    ).AddItem(new MenuItemDefinition(
+                ).AddItem(new MenuItemDefinition(
                         "Osoba",
                         L("Sve Osobe"),
                         url: "Osoba",
@@ -72,12 +71,17 @@ namespace BoilerPlate.Web.Startup
                         
                         icon: "fa fa-tasks"
 
-                        ).AddItem( 
-                        new MenuItemDefinition( 
+                ).AddItem(  new MenuItemDefinition( 
                           "Uredjaj",
                           L("Dodaj novi uredjaj"),
                           url:"Uredjaj/Add",
-                          icon:"fa fa-tasks"))
+                          icon:"fa fa-tasks")
+
+                ).AddItem( new MenuItemDefinition(
+                         "Uredjaj",
+                         L("Svi Uredjaji"),
+                         url:"Uredjaj",
+                         icon:"fa fa-tasks"))
 
 
 
